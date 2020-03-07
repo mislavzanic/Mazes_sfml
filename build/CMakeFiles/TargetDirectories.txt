@@ -1,0 +1,7 @@
+/mnt/c/pmf/oop/test_sfml/build/CMakeFiles/rebuild_cache.dir
+/mnt/c/pmf/oop/test_sfml/build/CMakeFiles/test.dir
+/mnt/c/pmf/oop/test_sfml/build/CMakeFiles/edit_cache.dir
+/mnt/c/pmf/oop/test_sfml/build/src/CMakeFiles/rebuild_cache.dir
+/mnt/c/pmf/oop/test_sfml/build/src/CMakeFiles/edit_cache.dir
+/mnt/c/pmf/oop/test_sfml/build/src/CMakeFiles/main.dir
+/mnt/c/pmf/oop/test_sfml/build/src/CMakeFiles/test.dir

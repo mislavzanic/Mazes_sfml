@@ -1,0 +1,17 @@
+[
+{
+  "directory": "/mnt/c/pmf/oop/test_sfml/build/src",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7    -g   -std=gnu++11 -o CMakeFiles/main.dir/main.cpp.o -c /mnt/c/pmf/oop/test_sfml/src/main.cpp",
+  "file": "/mnt/c/pmf/oop/test_sfml/src/main.cpp"
+},
+{
+  "directory": "/mnt/c/pmf/oop/test_sfml/build/src",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7    -g   -std=gnu++11 -o CMakeFiles/main.dir/MazeCell.cpp.o -c /mnt/c/pmf/oop/test_sfml/src/MazeCell.cpp",
+  "file": "/mnt/c/pmf/oop/test_sfml/src/MazeCell.cpp"
+},
+{
+  "directory": "/mnt/c/pmf/oop/test_sfml/build/src",
+  "command": "/usr/bin/x86_64-linux-gnu-g++-7    -g   -std=gnu++11 -o CMakeFiles/main.dir/Maze.cpp.o -c /mnt/c/pmf/oop/test_sfml/src/Maze.cpp",
+  "file": "/mnt/c/pmf/oop/test_sfml/src/Maze.cpp"
+}
+]

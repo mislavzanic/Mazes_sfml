@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/c/pmf/oop/test_sfml/src/Maze.cpp
+Maze.hpp
+/mnt/c/pmf/oop/test_sfml/src/Maze.hpp
+iostream
+-
+stack
+-
+cstdlib
+-
+ctime
+-
+
+/mnt/c/pmf/oop/test_sfml/src/Maze.hpp
+MazeCell.hpp
+/mnt/c/pmf/oop/test_sfml/src/MazeCell.hpp
+vector
+-
+
+/mnt/c/pmf/oop/test_sfml/src/MazeCell.cpp
+MazeCell.hpp
+/mnt/c/pmf/oop/test_sfml/src/MazeCell.hpp
+
+/mnt/c/pmf/oop/test_sfml/src/MazeCell.hpp
+SFML/Graphics.hpp
+-
+
+/mnt/c/pmf/oop/test_sfml/src/main.cpp
+Maze.hpp
+/mnt/c/pmf/oop/test_sfml/src/Maze.hpp
+iostream
+-
+
