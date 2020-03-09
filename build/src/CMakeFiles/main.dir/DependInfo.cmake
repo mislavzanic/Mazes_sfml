@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/mnt/c/pmf/oop/test_sfml/src/Maze.cpp" "/mnt/c/pmf/oop/test_sfml/build/src/CMakeFiles/main.dir/Maze.cpp.o"
-  "/mnt/c/pmf/oop/test_sfml/src/MazeCell.cpp" "/mnt/c/pmf/oop/test_sfml/build/src/CMakeFiles/main.dir/MazeCell.cpp.o"
-  "/mnt/c/pmf/oop/test_sfml/src/main.cpp" "/mnt/c/pmf/oop/test_sfml/build/src/CMakeFiles/main.dir/main.cpp.o"
+  "/mnt/c/pmf/oop/sfml_mazes/src/Maze.cpp" "/mnt/c/pmf/oop/sfml_mazes/build/src/CMakeFiles/main.dir/Maze.cpp.o"
+  "/mnt/c/pmf/oop/sfml_mazes/src/MazeCell.cpp" "/mnt/c/pmf/oop/sfml_mazes/build/src/CMakeFiles/main.dir/MazeCell.cpp.o"
+  "/mnt/c/pmf/oop/sfml_mazes/src/main.cpp" "/mnt/c/pmf/oop/sfml_mazes/build/src/CMakeFiles/main.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

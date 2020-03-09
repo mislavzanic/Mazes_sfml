@@ -11,12 +11,18 @@ int main(int argc, char **argv) {
         if (event.type == sf::Event::Closed)
             window.close();
 
-        if (!maze.is_generated) {
+        if (!maze.isGenerated) {
             maze.generateRecursive(window);
+            if (!window.isOpen()) break;
             std::cout << "Generated" << std::endl;
         }
 
-        window.clear();
+        if (!maze.isSolved) {
+            maze.solveBFS(window);
+            std::cout << "Solved" << std::endl;
+        }
+
+        window.clear(sf::Color::White);
         maze.draw(window);
         window.display();
     }

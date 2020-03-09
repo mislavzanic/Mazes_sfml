@@ -1,12 +1,11 @@
 #include "MazeCell.hpp"
 
-mg::MazeCell::MazeCell(int row, int col, sf::Color background_color, sf::Color wall_color,
+mg::MazeCell::MazeCell(int row, int col, sf::Color wall_color,
                        sf::Vector2f size, sf::Vector2f position, sf::Vector2f wall_width)
 : mRow(row), mCol(col) {
 
-    mBackground.setFillColor(background_color);
-    mBackground.setPosition(position);
-    mBackground.setSize(sf::Vector2f(size.x, size.y));
+    background.setPosition(position);
+    background.setSize(size);
 
     for (int i = 0; i < 4; ++i) {
         mWalls[i].setFillColor(wall_color);
@@ -32,7 +31,11 @@ mg::MazeCell::MazeCell(int row, int col, sf::Color background_color, sf::Color w
 }
 
 void mg::MazeCell::draw(sf::RenderWindow& window) {
-    window.draw(mBackground);
+    
+    if (visitedSolution){
+        window.draw(background);
+    }
+
     if (mWallDown)
         window.draw(mWalls[DOWN]);
     if (mWallUp)

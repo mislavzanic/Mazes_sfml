@@ -21,13 +21,16 @@ namespace mg {
         void generateRecursive(sf::RenderWindow& window);
         void generatePrim();
 
-        void solveBFS();
-        void solveDFS();
+        void solveBFS(sf::RenderWindow& window);
+        void solveDFS(sf::RenderWindow &window);
 
         MazeCell *freeNeighbour(MazeCell *cell);
         void removeWalls(MazeCell *cell1, MazeCell *cell2);
 
-        bool is_generated = false;
+        bool isGenerated = false;
+        bool isSolved = false;
+
+        int START = 0, END = mDim.x * mDim.y - 1;
     };
 }
 

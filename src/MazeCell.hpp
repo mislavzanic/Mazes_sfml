@@ -18,11 +18,11 @@ namespace mg {
 
         int mRow, mCol;
 
-        sf::RectangleShape mBackground;
         sf::RectangleShape mWalls[4];
+        sf::RectangleShape background;
 
     public:
-        MazeCell(int row, int col, sf::Color background_color, sf::Color wall_color, 
+        MazeCell(int row, int col, sf::Color wall_color, 
                  sf::Vector2f size, sf::Vector2f position, sf::Vector2f wall_width);
         ~MazeCell() {}
 
@@ -31,9 +31,16 @@ namespace mg {
         inline int getRow() { return mRow; }
         inline int getCol() { return mCol; }
 
+        inline bool getUpWall() { return mWallUp; }
+        inline bool getDownWall() { return mWallDown; }
+        inline bool getLeftWall() { return mWallLeft; }
+        inline bool getRightWall() { return mWallRight; }
+
         void removeWall(int n);
+        void setColor(sf::Color color) { background.setFillColor(color); }
 
         bool visited = false;
+        bool visitedSolution = false;
     };
 
 }

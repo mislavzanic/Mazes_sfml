@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /mnt/c/pmf/oop/test_sfml
+CMAKE_SOURCE_DIR = /mnt/c/pmf/oop/sfml_mazes
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /mnt/c/pmf/oop/test_sfml/build
+CMAKE_BINARY_DIR = /mnt/c/pmf/oop/sfml_mazes/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -91,14 +91,14 @@ test/fast: test
 
 # The main all target
 all: cmake_check_build_system
-	cd /mnt/c/pmf/oop/test_sfml/build && $(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/pmf/oop/test_sfml/build/CMakeFiles /mnt/c/pmf/oop/test_sfml/build/src/CMakeFiles/progress.marks
-	cd /mnt/c/pmf/oop/test_sfml/build && $(MAKE) -f CMakeFiles/Makefile2 src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/pmf/oop/test_sfml/build/CMakeFiles 0
+	cd /mnt/c/pmf/oop/sfml_mazes/build && $(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/pmf/oop/sfml_mazes/build/CMakeFiles /mnt/c/pmf/oop/sfml_mazes/build/src/CMakeFiles/progress.marks
+	cd /mnt/c/pmf/oop/sfml_mazes/build && $(MAKE) -f CMakeFiles/Makefile2 src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/pmf/oop/sfml_mazes/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /mnt/c/pmf/oop/test_sfml/build && $(MAKE) -f CMakeFiles/Makefile2 src/clean
+	cd /mnt/c/pmf/oop/sfml_mazes/build && $(MAKE) -f CMakeFiles/Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -108,22 +108,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /mnt/c/pmf/oop/test_sfml/build && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd /mnt/c/pmf/oop/sfml_mazes/build && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /mnt/c/pmf/oop/test_sfml/build && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd /mnt/c/pmf/oop/sfml_mazes/build && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /mnt/c/pmf/oop/test_sfml/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /mnt/c/pmf/oop/sfml_mazes/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/CMakeFiles/main.dir/rule:
-	cd /mnt/c/pmf/oop/test_sfml/build && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/main.dir/rule
+	cd /mnt/c/pmf/oop/sfml_mazes/build && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/main.dir/rule
 .PHONY : src/CMakeFiles/main.dir/rule
 
 # Convenience name for target.
@@ -133,7 +133,7 @@ main: src/CMakeFiles/main.dir/rule
 
 # fast build rule for target.
 main/fast:
-	cd /mnt/c/pmf/oop/test_sfml/build && $(MAKE) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/build
+	cd /mnt/c/pmf/oop/sfml_mazes/build && $(MAKE) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/build
 .PHONY : main/fast
 
 Maze.o: Maze.cpp.o
@@ -142,7 +142,7 @@ Maze.o: Maze.cpp.o
 
 # target to build an object file
 Maze.cpp.o:
-	cd /mnt/c/pmf/oop/test_sfml/build && $(MAKE) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/Maze.cpp.o
+	cd /mnt/c/pmf/oop/sfml_mazes/build && $(MAKE) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/Maze.cpp.o
 .PHONY : Maze.cpp.o
 
 Maze.i: Maze.cpp.i
@@ -151,7 +151,7 @@ Maze.i: Maze.cpp.i
 
 # target to preprocess a source file
 Maze.cpp.i:
-	cd /mnt/c/pmf/oop/test_sfml/build && $(MAKE) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/Maze.cpp.i
+	cd /mnt/c/pmf/oop/sfml_mazes/build && $(MAKE) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/Maze.cpp.i
 .PHONY : Maze.cpp.i
 
 Maze.s: Maze.cpp.s
@@ -160,7 +160,7 @@ Maze.s: Maze.cpp.s
 
 # target to generate assembly for a file
 Maze.cpp.s:
-	cd /mnt/c/pmf/oop/test_sfml/build && $(MAKE) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/Maze.cpp.s
+	cd /mnt/c/pmf/oop/sfml_mazes/build && $(MAKE) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/Maze.cpp.s
 .PHONY : Maze.cpp.s
 
 MazeCell.o: MazeCell.cpp.o
@@ -169,7 +169,7 @@ MazeCell.o: MazeCell.cpp.o
 
 # target to build an object file
 MazeCell.cpp.o:
-	cd /mnt/c/pmf/oop/test_sfml/build && $(MAKE) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/MazeCell.cpp.o
+	cd /mnt/c/pmf/oop/sfml_mazes/build && $(MAKE) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/MazeCell.cpp.o
 .PHONY : MazeCell.cpp.o
 
 MazeCell.i: MazeCell.cpp.i
@@ -178,7 +178,7 @@ MazeCell.i: MazeCell.cpp.i
 
 # target to preprocess a source file
 MazeCell.cpp.i:
-	cd /mnt/c/pmf/oop/test_sfml/build && $(MAKE) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/MazeCell.cpp.i
+	cd /mnt/c/pmf/oop/sfml_mazes/build && $(MAKE) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/MazeCell.cpp.i
 .PHONY : MazeCell.cpp.i
 
 MazeCell.s: MazeCell.cpp.s
@@ -187,7 +187,7 @@ MazeCell.s: MazeCell.cpp.s
 
 # target to generate assembly for a file
 MazeCell.cpp.s:
-	cd /mnt/c/pmf/oop/test_sfml/build && $(MAKE) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/MazeCell.cpp.s
+	cd /mnt/c/pmf/oop/sfml_mazes/build && $(MAKE) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/MazeCell.cpp.s
 .PHONY : MazeCell.cpp.s
 
 main.o: main.cpp.o
@@ -196,7 +196,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	cd /mnt/c/pmf/oop/test_sfml/build && $(MAKE) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/main.cpp.o
+	cd /mnt/c/pmf/oop/sfml_mazes/build && $(MAKE) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -205,7 +205,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	cd /mnt/c/pmf/oop/test_sfml/build && $(MAKE) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/main.cpp.i
+	cd /mnt/c/pmf/oop/sfml_mazes/build && $(MAKE) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -214,7 +214,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	cd /mnt/c/pmf/oop/test_sfml/build && $(MAKE) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/main.cpp.s
+	cd /mnt/c/pmf/oop/sfml_mazes/build && $(MAKE) -f src/CMakeFiles/main.dir/build.make src/CMakeFiles/main.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -247,6 +247,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /mnt/c/pmf/oop/test_sfml/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /mnt/c/pmf/oop/sfml_mazes/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

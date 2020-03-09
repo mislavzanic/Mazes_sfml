@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include <stack>
+#include <queue>
 #include <cstdlib>
 #include <ctime>
 
@@ -13,14 +14,18 @@ mg::Maze::Maze(sf::Vector2i dim, sf::Vector2f window_size) : mDim(dim) {
     for (int i = 0; i < dim.x; ++i) {
         for (int j = 0; j < dim.y; ++j) {
             sf::Vector2f position(i * size.x, j * size.y);
-            mg::MazeCell *cell = new mg::MazeCell(i, j, sf::Color::White, sf::Color::Black, size, position, wall_width);
+            mg::MazeCell *cell = new mg::MazeCell(i, j, sf::Color::Black, size, position, wall_width);
             mMaze.push_back(cell);
         }
     }
 }
 
 mg::Maze::~Maze() {
-    // ..............
+    for (int i = 0; i < mDim.x; ++i) {
+        for (int j = 0; j < mDim.y; ++j) {
+            delete mMaze[i * mDim.y + j];
+        }
+    }
 }
 
 void mg::Maze::removeWalls(mg::MazeCell *cell1, mg::MazeCell *cell2) {
@@ -114,10 +119,77 @@ void mg::Maze::generateRecursive(sf::RenderWindow& window) {
             this->removeWalls(cell, nextCell);
         }
 
-        window.clear();
+        sf::Event event;
+        window.pollEvent(event);
+        if (event.type == sf::Event::Closed) {
+            window.close();
+            break;
+        }
+        window.clear(sf::Color::White);
         this->draw(window);
         window.display();
     }
 
-    is_generated = true;
+    isGenerated = true;
+}
+
+//................................................................................................
+
+void mg::Maze::solveBFS(sf::RenderWindow& window) {
+    std::queue<MazeCell *> Q;
+    int *path = new int[mDim.x * mDim.y];
+
+    for (int i = 0; i < mDim.x * mDim.y; ++i) {
+        path[i] = -1;
+    }
+
+    Q.push(this->mMaze[START]);
+    while(!Q.empty()) {
+        MazeCell *cell = Q.front();
+        Q.pop();
+        cell->visitedSolution = true;
+        cell->setColor(sf::Color::Red);
+        if (cell->getCol() + cell->getRow() * mDim.y == END) break;
+
+        if (!cell->getRightWall()) { 
+            if (!this->mMaze[(cell->getRow() + 1) * mDim.y + cell->getCol()]->visitedSolution) {
+                Q.push(this->mMaze[(cell->getRow() + 1) * mDim.y + cell->getCol()]);
+                path[(cell->getRow() + 1) * mDim.y + cell->getCol()] = cell->getRow() * mDim.y + cell->getCol();
+            }
+        }
+        if (!cell->getLeftWall()) { 
+            if (!this->mMaze[(cell->getRow() - 1) * mDim.y + cell->getCol()]->visitedSolution) {
+                Q.push(this->mMaze[(cell->getRow() - 1) * mDim.y + cell->getCol()]);
+                path[(cell->getRow() - 1) * mDim.y + cell->getCol()] = cell->getRow() * mDim.y + cell->getCol();
+            }
+        }
+        if (!cell->getDownWall()) { 
+            if (!this->mMaze[cell->getRow() * mDim.y + cell->getCol() + 1]->visitedSolution) {
+                Q.push(this->mMaze[cell->getRow() * mDim.y + cell->getCol() + 1]);
+                path[cell->getRow() * mDim.y + cell->getCol() + 1] = cell->getRow() * mDim.y + cell->getCol();
+            }
+        }
+        if (!cell->getUpWall()) { 
+            if (!this->mMaze[cell->getRow() * mDim.y + cell->getCol() - 1]->visitedSolution) {
+                Q.push(this->mMaze[cell->getRow() * mDim.y + cell->getCol() - 1]);
+                path[cell->getRow() * mDim.y + cell->getCol() - 1] = cell->getRow() * mDim.y + cell->getCol();
+            }
+        }
+        
+        window.clear(sf::Color::White);
+        this->draw(window);
+        window.display();
+    }
+
+    int index = END;
+    this->mMaze[index]->setColor(sf::Color::Green);
+    while (index != START) {
+        index = path[index];
+        this->mMaze[index]->setColor(sf::Color::Green);
+        window.clear(sf::Color::White);
+        this->draw(window);
+        window.display();
+    }
+
+    isSolved = true;
 }

@@ -1,4 +1,4 @@
-# Install script for directory: /mnt/c/pmf/oop/test_sfml
+# Install script for directory: /mnt/c/pmf/oop/sfml_mazes
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/mnt/c/pmf/oop/test_sfml/build/src/cmake_install.cmake")
+  include("/mnt/c/pmf/oop/sfml_mazes/build/src/cmake_install.cmake")
 
 endif()
 
@@ -51,5 +51,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/mnt/c/pmf/oop/test_sfml/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/mnt/c/pmf/oop/sfml_mazes/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

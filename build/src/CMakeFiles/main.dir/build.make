@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /mnt/c/pmf/oop/test_sfml
+CMAKE_SOURCE_DIR = /mnt/c/pmf/oop/sfml_mazes
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /mnt/c/pmf/oop/test_sfml/build
+CMAKE_BINARY_DIR = /mnt/c/pmf/oop/sfml_mazes/build
 
 # Include any dependencies generated for this target.
 include src/CMakeFiles/main.dir/depend.make
@@ -59,16 +59,16 @@ include src/CMakeFiles/main.dir/flags.make
 
 src/CMakeFiles/main.dir/main.cpp.o: src/CMakeFiles/main.dir/flags.make
 src/CMakeFiles/main.dir/main.cpp.o: ../src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/pmf/oop/test_sfml/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/main.dir/main.cpp.o"
-	cd /mnt/c/pmf/oop/test_sfml/build/src && /usr/bin/x86_64-linux-gnu-g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/main.cpp.o -c /mnt/c/pmf/oop/test_sfml/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/pmf/oop/sfml_mazes/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/main.dir/main.cpp.o"
+	cd /mnt/c/pmf/oop/sfml_mazes/build/src && /usr/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/main.cpp.o -c /mnt/c/pmf/oop/sfml_mazes/src/main.cpp
 
 src/CMakeFiles/main.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/main.cpp.i"
-	cd /mnt/c/pmf/oop/test_sfml/build/src && /usr/bin/x86_64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/pmf/oop/test_sfml/src/main.cpp > CMakeFiles/main.dir/main.cpp.i
+	cd /mnt/c/pmf/oop/sfml_mazes/build/src && /usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/pmf/oop/sfml_mazes/src/main.cpp > CMakeFiles/main.dir/main.cpp.i
 
 src/CMakeFiles/main.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/main.cpp.s"
-	cd /mnt/c/pmf/oop/test_sfml/build/src && /usr/bin/x86_64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/pmf/oop/test_sfml/src/main.cpp -o CMakeFiles/main.dir/main.cpp.s
+	cd /mnt/c/pmf/oop/sfml_mazes/build/src && /usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/pmf/oop/sfml_mazes/src/main.cpp -o CMakeFiles/main.dir/main.cpp.s
 
 src/CMakeFiles/main.dir/main.cpp.o.requires:
 
@@ -83,16 +83,16 @@ src/CMakeFiles/main.dir/main.cpp.o.provides.build: src/CMakeFiles/main.dir/main.
 
 src/CMakeFiles/main.dir/MazeCell.cpp.o: src/CMakeFiles/main.dir/flags.make
 src/CMakeFiles/main.dir/MazeCell.cpp.o: ../src/MazeCell.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/pmf/oop/test_sfml/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/CMakeFiles/main.dir/MazeCell.cpp.o"
-	cd /mnt/c/pmf/oop/test_sfml/build/src && /usr/bin/x86_64-linux-gnu-g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/MazeCell.cpp.o -c /mnt/c/pmf/oop/test_sfml/src/MazeCell.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/pmf/oop/sfml_mazes/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/CMakeFiles/main.dir/MazeCell.cpp.o"
+	cd /mnt/c/pmf/oop/sfml_mazes/build/src && /usr/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/MazeCell.cpp.o -c /mnt/c/pmf/oop/sfml_mazes/src/MazeCell.cpp
 
 src/CMakeFiles/main.dir/MazeCell.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/MazeCell.cpp.i"
-	cd /mnt/c/pmf/oop/test_sfml/build/src && /usr/bin/x86_64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/pmf/oop/test_sfml/src/MazeCell.cpp > CMakeFiles/main.dir/MazeCell.cpp.i
+	cd /mnt/c/pmf/oop/sfml_mazes/build/src && /usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/pmf/oop/sfml_mazes/src/MazeCell.cpp > CMakeFiles/main.dir/MazeCell.cpp.i
 
 src/CMakeFiles/main.dir/MazeCell.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/MazeCell.cpp.s"
-	cd /mnt/c/pmf/oop/test_sfml/build/src && /usr/bin/x86_64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/pmf/oop/test_sfml/src/MazeCell.cpp -o CMakeFiles/main.dir/MazeCell.cpp.s
+	cd /mnt/c/pmf/oop/sfml_mazes/build/src && /usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/pmf/oop/sfml_mazes/src/MazeCell.cpp -o CMakeFiles/main.dir/MazeCell.cpp.s
 
 src/CMakeFiles/main.dir/MazeCell.cpp.o.requires:
 
@@ -107,16 +107,16 @@ src/CMakeFiles/main.dir/MazeCell.cpp.o.provides.build: src/CMakeFiles/main.dir/M
 
 src/CMakeFiles/main.dir/Maze.cpp.o: src/CMakeFiles/main.dir/flags.make
 src/CMakeFiles/main.dir/Maze.cpp.o: ../src/Maze.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/pmf/oop/test_sfml/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/CMakeFiles/main.dir/Maze.cpp.o"
-	cd /mnt/c/pmf/oop/test_sfml/build/src && /usr/bin/x86_64-linux-gnu-g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/Maze.cpp.o -c /mnt/c/pmf/oop/test_sfml/src/Maze.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/c/pmf/oop/sfml_mazes/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/CMakeFiles/main.dir/Maze.cpp.o"
+	cd /mnt/c/pmf/oop/sfml_mazes/build/src && /usr/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/Maze.cpp.o -c /mnt/c/pmf/oop/sfml_mazes/src/Maze.cpp
 
 src/CMakeFiles/main.dir/Maze.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/Maze.cpp.i"
-	cd /mnt/c/pmf/oop/test_sfml/build/src && /usr/bin/x86_64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/pmf/oop/test_sfml/src/Maze.cpp > CMakeFiles/main.dir/Maze.cpp.i
+	cd /mnt/c/pmf/oop/sfml_mazes/build/src && /usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/c/pmf/oop/sfml_mazes/src/Maze.cpp > CMakeFiles/main.dir/Maze.cpp.i
 
 src/CMakeFiles/main.dir/Maze.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/Maze.cpp.s"
-	cd /mnt/c/pmf/oop/test_sfml/build/src && /usr/bin/x86_64-linux-gnu-g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/pmf/oop/test_sfml/src/Maze.cpp -o CMakeFiles/main.dir/Maze.cpp.s
+	cd /mnt/c/pmf/oop/sfml_mazes/build/src && /usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/c/pmf/oop/sfml_mazes/src/Maze.cpp -o CMakeFiles/main.dir/Maze.cpp.s
 
 src/CMakeFiles/main.dir/Maze.cpp.o.requires:
 
@@ -147,8 +147,8 @@ src/main: /usr/lib/x86_64-linux-gnu/libsfml-window.so
 src/main: /usr/lib/x86_64-linux-gnu/libsfml-graphics.so
 src/main: /usr/lib/x86_64-linux-gnu/libsfml-audio.so
 src/main: src/CMakeFiles/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/pmf/oop/test_sfml/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable main"
-	cd /mnt/c/pmf/oop/test_sfml/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/c/pmf/oop/sfml_mazes/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable main"
+	cd /mnt/c/pmf/oop/sfml_mazes/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/CMakeFiles/main.dir/build: src/main
@@ -162,10 +162,10 @@ src/CMakeFiles/main.dir/requires: src/CMakeFiles/main.dir/Maze.cpp.o.requires
 .PHONY : src/CMakeFiles/main.dir/requires
 
 src/CMakeFiles/main.dir/clean:
-	cd /mnt/c/pmf/oop/test_sfml/build/src && $(CMAKE_COMMAND) -P CMakeFiles/main.dir/cmake_clean.cmake
+	cd /mnt/c/pmf/oop/sfml_mazes/build/src && $(CMAKE_COMMAND) -P CMakeFiles/main.dir/cmake_clean.cmake
 .PHONY : src/CMakeFiles/main.dir/clean
 
 src/CMakeFiles/main.dir/depend:
-	cd /mnt/c/pmf/oop/test_sfml/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/c/pmf/oop/test_sfml /mnt/c/pmf/oop/test_sfml/src /mnt/c/pmf/oop/test_sfml/build /mnt/c/pmf/oop/test_sfml/build/src /mnt/c/pmf/oop/test_sfml/build/src/CMakeFiles/main.dir/DependInfo.cmake --color=$(COLOR)
+	cd /mnt/c/pmf/oop/sfml_mazes/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/c/pmf/oop/sfml_mazes /mnt/c/pmf/oop/sfml_mazes/src /mnt/c/pmf/oop/sfml_mazes/build /mnt/c/pmf/oop/sfml_mazes/build/src /mnt/c/pmf/oop/sfml_mazes/build/src/CMakeFiles/main.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : src/CMakeFiles/main.dir/depend
 

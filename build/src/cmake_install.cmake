@@ -1,4 +1,4 @@
-# Install script for directory: /mnt/c/pmf/oop/test_sfml/src
+# Install script for directory: /mnt/c/pmf/oop/sfml_mazes/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
