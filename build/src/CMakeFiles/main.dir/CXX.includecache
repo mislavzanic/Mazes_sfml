@@ -9,11 +9,11 @@
 /mnt/c/pmf/oop/sfml_mazes/src/Maze.cpp
 Maze.hpp
 /mnt/c/pmf/oop/sfml_mazes/src/Maze.hpp
-iostream
--
 stack
 -
 queue
+-
+vector
 -
 cstdlib
 -
@@ -38,5 +38,7 @@ SFML/Graphics.hpp
 Maze.hpp
 /mnt/c/pmf/oop/sfml_mazes/src/Maze.hpp
 iostream
+-
+string
 -
 

@@ -1,5 +1,4 @@
-#ifndef MAZE_HPP_INCLUDED
-#define MAZE_HPP_INCLUDED
+#pragma once
 
 #include "MazeCell.hpp"
 
@@ -12,6 +11,8 @@ namespace mg {
         std::vector<MazeCell *> mMaze;
         sf::Vector2i mDim;
 
+        void __queueCells(std::vector<MazeCell *>& V, MazeCell *cell);
+
     public:
         Maze(sf::Vector2i dim, sf::Vector2f window_size);
         ~Maze();
@@ -19,7 +20,10 @@ namespace mg {
         void draw(sf::RenderWindow& window);
         
         void generateRecursive(sf::RenderWindow& window);
-        void generatePrim();
+        void generatePrim(sf::RenderWindow& window);
+        void generateWilson(sf::RenderWindow& window);
+
+        void buildGraph();
 
         void solveBFS(sf::RenderWindow& window);
         void solveDFS(sf::RenderWindow &window);
@@ -33,5 +37,3 @@ namespace mg {
         int START = 0, END = mDim.x * mDim.y - 1;
     };
 }
-
-#endif

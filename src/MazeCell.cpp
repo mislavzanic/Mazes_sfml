@@ -36,6 +36,12 @@ void mg::MazeCell::draw(sf::RenderWindow& window) {
         window.draw(background);
     }
 
+    if (isCurrent) {
+        background.setFillColor(sf::Color::Magenta);
+        window.draw(background);
+        background.setFillColor(sf::Color::White);
+    }
+
     if (mWallDown)
         window.draw(mWalls[DOWN]);
     if (mWallUp)

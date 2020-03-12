@@ -1,5 +1,4 @@
-#ifndef MAZECELL_HPP_INCLUDED
-#define MAZECELL_HPP_INCLUDED
+#pragma once
 
 #include <SFML/Graphics.hpp>
 
@@ -41,7 +40,7 @@ namespace mg {
 
         bool visited = false;
         bool visitedSolution = false;
+        bool isCurrent = false;
     };
 
 }
-#endif
