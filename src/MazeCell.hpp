@@ -13,22 +13,20 @@ namespace mg {
 
     class MazeCell {
     private:
+
         bool mWallUp, mWallDown, mWallLeft, mWallRight;
-
         int mRow, mCol;
-
-        sf::RectangleShape mWalls[4];
-        sf::RectangleShape background;
+        sf::Vector2f mPosition, mWall_width;
 
     public:
-        MazeCell(int row, int col, sf::Color wall_color, 
-                 sf::Vector2f size, sf::Vector2f position, sf::Vector2f wall_width);
+        MazeCell(int row, int col, sf::Vector2f size, sf::Vector2f position, sf::Vector2f wall_width);
         ~MazeCell() {}
-
-        void draw(sf::RenderWindow& window);
 
         inline int getRow() { return mRow; }
         inline int getCol() { return mCol; }
+
+        inline sf::Vector2f getPositon() { return mPosition; }
+        inline sf::Vector2f Wall_width() { return mWall_width; }
 
         inline bool getUpWall() { return mWallUp; }
         inline bool getDownWall() { return mWallDown; }
@@ -36,11 +34,13 @@ namespace mg {
         inline bool getRightWall() { return mWallRight; }
 
         void removeWall(int n);
-        void setColor(sf::Color color) { background.setFillColor(color); }
+        void setColor(sf::Color color) { this->mColor = color; }
 
         bool visited = false;
         bool visitedSolution = false;
         bool isCurrent = false;
+
+        sf::Color mColor = sf::Color::Magenta;
     };
 
 }

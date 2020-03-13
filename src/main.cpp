@@ -29,9 +29,10 @@ int main(int argc, char **argv) {
             std::cout << "Solved" << std::endl;
         }
 
-        window.clear(sf::Color::White);
+        window.clear();
         maze.draw(window);
         window.display();
     }
+
     return 0;
 }

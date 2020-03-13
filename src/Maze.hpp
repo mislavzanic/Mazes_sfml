@@ -11,6 +11,9 @@ namespace mg {
         std::vector<MazeCell *> mMaze;
         sf::Vector2i mDim;
 
+        std::vector<sf::Vertex> quads;
+        sf::Vector2f mSize;
+
         void __queueCells(std::vector<MazeCell *>& V, MazeCell *cell);
 
     public:
@@ -18,6 +21,8 @@ namespace mg {
         ~Maze();
 
         void draw(sf::RenderWindow& window);
+
+        inline sf::Vector2f getSize() { return mSize; }
         
         void generateRecursive(sf::RenderWindow& window);
         void generatePrim(sf::RenderWindow& window);

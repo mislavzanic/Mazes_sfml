@@ -8,14 +8,21 @@
 
 mg::Maze::Maze(sf::Vector2i dim, sf::Vector2f window_size) : mDim(dim) {
 
-    sf::Vector2f size(window_size.x / dim.x, window_size.y / dim.y);
-    sf::Vector2f wall_width(size.x / 20, size.y / 20);
+    this->mSize = sf::Vector2f(window_size.x / dim.x, window_size.y / dim.y);
+    sf::Vector2f wall_width(mSize.x / 20, mSize.y / 20);
 
     for (int i = 0; i < dim.x; ++i) {
         for (int j = 0; j < dim.y; ++j) {
-            sf::Vector2f position(i * size.x, j * size.y);
-            mg::MazeCell *cell = new mg::MazeCell(i, j, sf::Color::Black, size, position, wall_width);
-            mMaze.push_back(cell);
+            sf::Vector2f position(i * mSize.x, j * mSize.y);
+            mg::MazeCell *cell = new mg::MazeCell(i, j, mSize, position, wall_width);
+
+            // CENTER CELL
+            this->quads.push_back(sf::Vertex(sf::Vector2f(position.x + wall_width.x          , position.y + wall_width.y          ), sf::Color::Black));
+            this->quads.push_back(sf::Vertex(sf::Vector2f(position.x + mSize.x - wall_width.x, position.y + wall_width.y          ), sf::Color::Black));
+            this->quads.push_back(sf::Vertex(sf::Vector2f(position.x + mSize.x - wall_width.x, position.y + mSize.y - wall_width.y), sf::Color::Black));
+            this->quads.push_back(sf::Vertex(sf::Vector2f(position.x + wall_width.x          , position.y + mSize.y - wall_width.y), sf::Color::Black));
+
+            this->mMaze.push_back(cell);
         }
     }
 }
@@ -93,9 +100,75 @@ void mg::Maze::draw(sf::RenderWindow& window) {
 
     for (int i = 0; i < this->mDim.x; ++i) {
         for (int j = 0; j < this->mDim.y; ++j) {
-            mMaze[i * this->mDim.y + j]->draw(window);
+
+            if (this->mMaze[i * mDim.y + j]->visited) {
+                for (int k = 4 * (i * this->mDim.y + j); k < 4 * (i * this->mDim.y + j + 1); ++k) {
+                    this->quads[k].color = sf::Color::White;
+                }
+            }
+
+            if (this->mMaze[i * mDim.y + j]->isCurrent || this->mMaze[i * mDim.y + j]->visitedSolution) {
+                for (int k = 4 * (i * this->mDim.y + j); k < 4 * (i * this->mDim.y + j + 1); ++k) {
+                    this->quads[k].color = this->mMaze[i * mDim.y + j] ->mColor;
+                }
+            }
+
+            if (!this->mMaze[i * mDim.y + j]->getDownWall()) {
+                this->quads[4 * (i * mDim.y + j) + 3].position = sf::Vector2f(this->mMaze[i * this->mDim.y + j]->getPositon().x + this->mMaze[i * this->mDim.y + j]->Wall_width().x,
+                                                                              this->mMaze[i * this->mDim.y + j]->getPositon().y + this->mSize.y + 2 * this->mMaze[i * this->mDim.y + j]->Wall_width().y);
+                if (!this->mMaze[i * mDim.y + j]->getLeftWall()) {
+                    this->quads[4 * (i * mDim.y + j) + 3].position = sf::Vector2f(this->mMaze[i * this->mDim.y + j]->getPositon().x,
+                                                                                  this->mMaze[i * this->mDim.y + j]->getPositon().y + this->mSize.y + this->mMaze[i * this->mDim.y + j]->Wall_width().y);
+                } 
+
+                this->quads[4 * (i * mDim.y + j) + 2].position = sf::Vector2f(this->mMaze[i * this->mDim.y + j]->getPositon().x + this->mSize.x - this->mMaze[i * this->mDim.y + j]->Wall_width().x,
+                                                                              this->mMaze[i * this->mDim.y + j]->getPositon().y + this->mSize.y + 2 * this->mMaze[i * this->mDim.y + j]->Wall_width().y);
+                if (!this->mMaze[i * mDim.y + j]->getRightWall()) {
+                    this->quads[4 * (i * mDim.y + j) + 2].position = sf::Vector2f(this->mMaze[i * this->mDim.y + j]->getPositon().x + this->mSize.x,
+                                                                                  this->mMaze[i * this->mDim.y + j]->getPositon().y + this->mSize.y);
+                }
+            }
+            if (!this->mMaze[i * mDim.y + j]->getUpWall()) {
+                this->quads[4 * (i * mDim.y + j)].position = sf::Vector2f(this->mMaze[i * this->mDim.y + j]->getPositon().x + this->mMaze[i * this->mDim.y + j]->Wall_width().x,
+                                                                          this->mMaze[i * this->mDim.y + j]->getPositon().y);
+                if (!this->mMaze[i * mDim.y + j]->getLeftWall()) {
+                    this->quads[4 * (i * mDim.y + j)].position = sf::Vector2f(this->mMaze[i * this->mDim.y + j]->getPositon().x,
+                                                                              this->mMaze[i * this->mDim.y + j]->getPositon().y);
+                }
+
+                this->quads[4 * (i * mDim.y + j) + 1].position = sf::Vector2f(this->mMaze[i * this->mDim.y + j]->getPositon().x + this->mSize.x - this->mMaze[i * this->mDim.y + j]->Wall_width().x,
+                                                                              this->mMaze[i * this->mDim.y + j]->getPositon().y);
+                if (!this->mMaze[i * mDim.y + j]->getRightWall()) {
+                    this->quads[4 * (i * mDim.y + j) + 1].position = sf::Vector2f(this->mMaze[i * this->mDim.y + j]->getPositon().x + this->mSize.x,
+                                                                                  this->mMaze[i * this->mDim.y + j]->getPositon().y);
+                }
+            }
+            if (!this->mMaze[i * mDim.y + j]->getLeftWall()) {
+                if (this->mMaze[i * mDim.y + j]->getUpWall()) { 
+                    this->quads[4 * (i * mDim.y + j)].position = sf::Vector2f(this->mMaze[i * this->mDim.y + j]->getPositon().x,
+                                                                              this->mMaze[i * this->mDim.y + j]->getPositon().y + this->mMaze[i * this->mDim.y + j]->Wall_width().y);
+                }
+
+                if (this->mMaze[i * mDim.y + j]->getDownWall()) { 
+                    this->quads[4 * (i * mDim.y + j) + 3].position = sf::Vector2f(this->mMaze[i * this->mDim.y + j]->getPositon().x,
+                                                                                  this->mMaze[i * this->mDim.y + j]->getPositon().y + this->mSize.y - this->mMaze[i * this->mDim.y + j]->Wall_width().y);
+                }
+            }
+            if (!this->mMaze[i * mDim.y + j]->getRightWall()) {
+                if (this->mMaze[i * mDim.y + j]->getUpWall()) {
+                    this->quads[4 * (i * mDim.y + j) + 1].position = sf::Vector2f(this->mMaze[i * this->mDim.y + j]->getPositon().x + this->mSize.x,
+                                                                                this->mMaze[i * this->mDim.y + j]->getPositon().y + this->mMaze[i * this->mDim.y + j]->Wall_width().y);
+                }
+
+                if (this->mMaze[i * mDim.y + j]->getDownWall()) { 
+                    this->quads[4 * (i * mDim.y + j) + 2].position = sf::Vector2f(this->mMaze[i * this->mDim.y + j]->getPositon().x + this->mSize.x,
+                                                                                this->mMaze[i * this->mDim.y + j]->getPositon().y + this->mSize.y - this->mMaze[i * this->mDim.y + j]->Wall_width().y);
+                }
+            }
         }
     }
+
+    window.draw(&quads[0], quads.size(), sf::Quads);
 }
 
 void mg::Maze::generateRecursive(sf::RenderWindow& window) {
@@ -104,7 +177,8 @@ void mg::Maze::generateRecursive(sf::RenderWindow& window) {
 
     srand(time(NULL));
 
-    S.push(mMaze[0]);
+    S.push(this->mMaze[0]);
+    this->mMaze[0]->visited = true;
     while (!S.empty()) {
         MazeCell *cell = S.top(), *nextCell;
         cell->visited = true;
@@ -129,7 +203,8 @@ void mg::Maze::generateRecursive(sf::RenderWindow& window) {
             window.close();
             break;
         }
-        window.clear(sf::Color::White);
+
+        window.clear();
         this->draw(window);
         cell->isCurrent = false;
         window.display();
@@ -203,7 +278,7 @@ void mg::Maze::generatePrim(sf::RenderWindow& window) {
             break;
         }
 
-        window.clear(sf::Color::White);
+        window.clear();
         this->draw(window);
         window.display();
     
@@ -260,7 +335,7 @@ void mg::Maze::solveBFS(sf::RenderWindow& window) {
             }
         }
         
-        window.clear(sf::Color::White);
+        window.clear();
         this->draw(window);
         window.display();
     }
@@ -270,7 +345,7 @@ void mg::Maze::solveBFS(sf::RenderWindow& window) {
     while (index != START) {
         index = path[index];
         this->mMaze[index]->setColor(sf::Color::Green);
-        window.clear(sf::Color::White);
+        window.clear();
         this->draw(window);
         window.display();
     }
@@ -319,7 +394,7 @@ void mg::Maze::solveDFS(sf::RenderWindow& window) {
                 path[cell->getRow() * this->mDim.y + cell->getCol() - 1] = cell->getRow() * this->mDim.y + cell->getCol();
             }
         }
-        window.clear(sf::Color::White);
+        window.clear();
         this->draw(window);
         window.display();
     }
@@ -329,7 +404,7 @@ void mg::Maze::solveDFS(sf::RenderWindow& window) {
     while (index != START) {
         index = path[index];
         this->mMaze[index]->setColor(sf::Color::Green);
-        window.clear(sf::Color::White);
+        window.clear();
         this->draw(window);
         window.display();
     }
