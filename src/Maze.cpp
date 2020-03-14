@@ -345,7 +345,8 @@ void mg::Maze::generateWilson(sf::RenderWindow& window) {
         } else if (newCell->visited) {
 
             while (!S.empty()) {
-                if (cell->visited) {S.pop(); break;}
+                if (cell->visited) { S.pop(); break; }
+                
                 cell->visited = true;
                 cell->isCurrent = false;
                 numoOfVisited++;
