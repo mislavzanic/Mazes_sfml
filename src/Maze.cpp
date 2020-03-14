@@ -303,7 +303,6 @@ void mg::Maze::generatePrim(sf::RenderWindow& window) {
         window.display();
     
     }
-
     this->isGenerated = true;
 }
 
@@ -312,13 +311,13 @@ void mg::Maze::generateWilson(sf::RenderWindow& window) {
     srand(time(NULL));
 
     std::stack<MazeCell *> S;
-    int numOfVisited = 0;
+    int numoOfVisited = 0;
 
     int randint = random() % (this->mDim.x * this->mDim.y);
     this->mMaze[randint]->visited = true;
-    numOfVisited++;
+    numoOfVisited++;
 
-    while (numOfVisited < this->mDim.y * this->mDim.x) {
+    while (numoOfVisited < this->mDim.x * this->mDim.y) {
 
         while (S.empty()) {
             randint = random() % (this->mDim.x * this->mDim.y);
@@ -330,13 +329,12 @@ void mg::Maze::generateWilson(sf::RenderWindow& window) {
         MazeCell *cell = S.top();
         MazeCell *newCell = this->freeNeighbour(cell, WILSON);
     
-        if (!newCell->isCurrent) {
+        if (!newCell->isCurrent && !newCell->visited) {
 
             newCell->isCurrent = true;
             S.push(newCell);
             
         } else if (newCell->isCurrent) {
-
             while (cell->getRow() * this->mDim.y + cell->getCol() != newCell->getRow() * this->mDim.y + newCell->getCol()) {
                 cell->isCurrent = false;
                 S.pop();
@@ -347,14 +345,19 @@ void mg::Maze::generateWilson(sf::RenderWindow& window) {
         } else if (newCell->visited) {
 
             while (!S.empty()) {
+                if (cell->visited) {S.pop(); break;}
                 cell->visited = true;
                 cell->isCurrent = false;
-                numOfVisited++;
-                this->removeWalls(newCell, cell);
+                numoOfVisited++;
+                this->removeWalls(newCell, cell);                
                 if (!S.empty()) { 
-                    newCell = cell;
+                    newCell = S.top();
+                    S.pop();
                     cell = S.top();
                 }
+                window.clear();
+                this->draw(window);
+                window.display();
             }
 
         }
@@ -362,6 +365,7 @@ void mg::Maze::generateWilson(sf::RenderWindow& window) {
         window.clear();
         this->draw(window);
         window.display();
+
     }
 
     this->isGenerated = true;
