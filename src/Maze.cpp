@@ -323,6 +323,7 @@ void mg::Maze::generateWilson(sf::RenderWindow& window) {
             randint = random() % (this->mDim.x * this->mDim.y);
             if (!this->mMaze[randint]->visited && !this->mMaze[randint]->isCurrent) {
                 S.push(this->mMaze[randint]);
+                this->mMaze[randint]->isCurrent = true;
             }
         }
 
@@ -345,7 +346,6 @@ void mg::Maze::generateWilson(sf::RenderWindow& window) {
         } else if (newCell->visited) {
 
             while (!S.empty()) {
-                if (cell->visited) { S.pop(); break; }
                 
                 cell->visited = true;
                 cell->isCurrent = false;
