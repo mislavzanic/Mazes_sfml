@@ -1,1 +1,0 @@
-/usr/bin/g++-7  -g  -rdynamic CMakeFiles/main.dir/main.cpp.o CMakeFiles/main.dir/MazeCell.cpp.o CMakeFiles/main.dir/Maze.cpp.o  -o main -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio 

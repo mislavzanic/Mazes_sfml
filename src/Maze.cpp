@@ -35,6 +35,10 @@ mg::Maze::~Maze() {
     }
 }
 
+//.....................................................................................................................................................................................................................................................................
+//.....................................................................................................................................................................................................................................................................
+//.....................................................................................................................................................................................................................................................................
+
 void mg::Maze::removeWalls(mg::MazeCell *cell1, mg::MazeCell *cell2) {
     if (cell1->getCol() == cell2->getCol()) {
         if (cell1->getRow() < cell2->getRow()) {
@@ -94,7 +98,29 @@ mg::MazeCell *mg::Maze::freeNeighbour(mg::MazeCell *cell) {
     return this->mMaze[cell->getRow() * this->mDim.y + cell->getCol() - 1];
 }
 
-// ...........................................................................................................................
+void mg::Maze::__queueCells(std::vector<MazeCell *>& V, MazeCell *cell) {
+
+    if (cell->getCol() > 0 && !this->mMaze[cell->getRow() * this->mDim.y + cell->getCol() - 1]->visited && !this->mMaze[cell->getRow() * this->mDim.y + cell->getCol() - 1]->isCurrent) {
+        V.push_back(this->mMaze[cell->getRow() * this->mDim.y + cell->getCol() - 1]);
+        this->mMaze[cell->getRow() * this->mDim.y + cell->getCol() - 1]->isCurrent = true;
+    }
+    if (cell->getCol() < this->mDim.y - 1 && !this->mMaze[cell->getRow() * this->mDim.y + cell->getCol() + 1]->visited && !this->mMaze[cell->getRow() * this->mDim.y + cell->getCol() + 1]->isCurrent) { 
+        V.push_back(this->mMaze[cell->getRow() * this->mDim.y + cell->getCol() + 1]);
+        this->mMaze[cell->getRow() * this->mDim.y + cell->getCol() + 1]->isCurrent = true;
+    }
+    if (cell->getRow() > 0 && !this->mMaze[(cell->getRow() - 1) * this->mDim.y + cell->getCol()]->visited && !this->mMaze[(cell->getRow() - 1) * this->mDim.y + cell->getCol()]->isCurrent) { 
+        V.push_back(this->mMaze[(cell->getRow() - 1) * this->mDim.y + cell->getCol()]);
+        this->mMaze[(cell->getRow() - 1) * this->mDim.y + cell->getCol()]->isCurrent = true;
+    }
+    if (cell->getRow() < this->mDim.x - 1 && !this->mMaze[(cell->getRow() + 1) * this->mDim.y + cell->getCol()]->visited && !this->mMaze[(cell->getRow() + 1) * this->mDim.y + cell->getCol()]->isCurrent) { 
+        V.push_back(this->mMaze[(cell->getRow() + 1) * this->mDim.y + cell->getCol()]);
+        this->mMaze[(cell->getRow() + 1) * this->mDim.y + cell->getCol()]->isCurrent = true;
+    }
+}
+
+//.....................................................................................................................................................................................................................................................................
+//.....................................................................................................................................................................................................................................................................
+//.....................................................................................................................................................................................................................................................................
 
 void mg::Maze::draw(sf::RenderWindow& window) {
 
@@ -171,6 +197,10 @@ void mg::Maze::draw(sf::RenderWindow& window) {
     window.draw(&quads[0], quads.size(), sf::Quads);
 }
 
+//.....................................................................................................................................................................................................................................................................
+//.....................................................................................................................................................................................................................................................................
+//.....................................................................................................................................................................................................................................................................
+
 void mg::Maze::generateRecursive(sf::RenderWindow& window) {
 
     std::stack<MazeCell *> S;
@@ -211,25 +241,6 @@ void mg::Maze::generateRecursive(sf::RenderWindow& window) {
     }
 
     this->isGenerated = true;
-}
-
-void mg::Maze::__queueCells(std::vector<MazeCell *>& V, MazeCell *cell) {
-    if (cell->getCol() > 0 && !this->mMaze[cell->getRow() * this->mDim.y + cell->getCol() - 1]->visited && !this->mMaze[cell->getRow() * this->mDim.y + cell->getCol() - 1]->isCurrent) {
-        V.push_back(this->mMaze[cell->getRow() * this->mDim.y + cell->getCol() - 1]);
-        this->mMaze[cell->getRow() * this->mDim.y + cell->getCol() - 1]->isCurrent = true;
-    }
-    if (cell->getCol() < this->mDim.y - 1 && !this->mMaze[cell->getRow() * this->mDim.y + cell->getCol() + 1]->visited && !this->mMaze[cell->getRow() * this->mDim.y + cell->getCol() + 1]->isCurrent) { 
-        V.push_back(this->mMaze[cell->getRow() * this->mDim.y + cell->getCol() + 1]);
-        this->mMaze[cell->getRow() * this->mDim.y + cell->getCol() + 1]->isCurrent = true;
-    }
-    if (cell->getRow() > 0 && !this->mMaze[(cell->getRow() - 1) * this->mDim.y + cell->getCol()]->visited && !this->mMaze[(cell->getRow() - 1) * this->mDim.y + cell->getCol()]->isCurrent) { 
-        V.push_back(this->mMaze[(cell->getRow() - 1) * this->mDim.y + cell->getCol()]);
-        this->mMaze[(cell->getRow() - 1) * this->mDim.y + cell->getCol()]->isCurrent = true;
-    }
-    if (cell->getRow() < this->mDim.x - 1 && !this->mMaze[(cell->getRow() + 1) * this->mDim.y + cell->getCol()]->visited && !this->mMaze[(cell->getRow() + 1) * this->mDim.y + cell->getCol()]->isCurrent) { 
-        V.push_back(this->mMaze[(cell->getRow() + 1) * this->mDim.y + cell->getCol()]);
-        this->mMaze[(cell->getRow() + 1) * this->mDim.y + cell->getCol()]->isCurrent = true;
-    }
 }
 
 void mg::Maze::generatePrim(sf::RenderWindow& window) {
@@ -292,7 +303,9 @@ void mg::Maze::generateWilson(sf::RenderWindow& window) {
     this->isGenerated = true;
 }
 
-//................................................................................................
+//.....................................................................................................................................................................................................................................................................
+//.....................................................................................................................................................................................................................................................................
+//.....................................................................................................................................................................................................................................................................
 
 void mg::Maze::solveBFS(sf::RenderWindow& window) {
     std::queue<MazeCell *> Q;
