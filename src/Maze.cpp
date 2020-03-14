@@ -5,6 +5,9 @@
 #include <vector>
 #include <cstdlib>
 #include <ctime>
+#include <cstring>
+
+#include <iostream>
 
 mg::Maze::Maze(sf::Vector2i dim, sf::Vector2f window_size) : mDim(dim) {
 
@@ -59,22 +62,22 @@ void mg::Maze::removeWalls(mg::MazeCell *cell1, mg::MazeCell *cell2) {
     }
 }
 
-mg::MazeCell *mg::Maze::freeNeighbour(mg::MazeCell *cell) {
+mg::MazeCell *mg::Maze::freeNeighbour(mg::MazeCell *cell, mazeMode mode = RECURSIVE) {
     bool possibleCells[] = {true, true, true, true};
     if (cell->getCol() == 0) possibleCells[UP] = false;
-    else if (this->mMaze[cell->getRow() * this->mDim.y + cell->getCol() - 1]->visited)
+    else if (this->mMaze[cell->getRow() * this->mDim.y + cell->getCol() - 1]->visited && mode == RECURSIVE)
         possibleCells[UP] = false;
 
     if (cell->getCol() == this->mDim.y - 1) possibleCells[DOWN] = false;
-    else if (this->mMaze[cell->getRow() * this->mDim.y + cell->getCol() + 1]->visited)
+    else if (this->mMaze[cell->getRow() * this->mDim.y + cell->getCol() + 1]->visited && mode == RECURSIVE)
         possibleCells[DOWN] = false;
 
     if (cell->getRow() == 0) possibleCells[LEFT] = false;
-    else if (this->mMaze[(cell->getRow() - 1) * this->mDim.y + cell->getCol()]->visited)
+    else if (this->mMaze[(cell->getRow() - 1) * this->mDim.y + cell->getCol()]->visited && mode == RECURSIVE)
         possibleCells[LEFT] = false;
 
     if (cell->getRow() == this->mDim.x - 1) possibleCells[RIGHT] = false;
-    else if (this->mMaze[(cell->getRow() + 1) * this->mDim.y + cell->getCol()]->visited)
+    else if (this->mMaze[(cell->getRow() + 1) * this->mDim.y + cell->getCol()]->visited && mode == RECURSIVE)
         possibleCells[RIGHT] = false;
 
     int numOfAval = 0;
@@ -136,6 +139,12 @@ void mg::Maze::draw(sf::RenderWindow& window) {
             if (this->mMaze[i * mDim.y + j]->isCurrent || this->mMaze[i * mDim.y + j]->visitedSolution) {
                 for (int k = 4 * (i * this->mDim.y + j); k < 4 * (i * this->mDim.y + j + 1); ++k) {
                     this->quads[k].color = this->mMaze[i * mDim.y + j] ->mColor;
+                }
+            }
+
+            if (!this->mMaze[i * mDim.y + j]->isCurrent && !this->mMaze[i * mDim.y + j]->visited) {
+                for (int k = 4 * (i * this->mDim.y + j); k < 4 * (i * this->mDim.y + j + 1); ++k) {
+                    this->quads[k].color = sf::Color::Black;
                 }
             }
 
@@ -299,6 +308,61 @@ void mg::Maze::generatePrim(sf::RenderWindow& window) {
 }
 
 void mg::Maze::generateWilson(sf::RenderWindow& window) {
+
+    srand(time(NULL));
+
+    std::stack<MazeCell *> S;
+    int numOfVisited = 0;
+
+    int randint = random() % (this->mDim.x * this->mDim.y);
+    this->mMaze[randint]->visited = true;
+    numOfVisited++;
+
+    while (numOfVisited < this->mDim.y * this->mDim.x) {
+
+        while (S.empty()) {
+            randint = random() % (this->mDim.x * this->mDim.y);
+            if (!this->mMaze[randint]->visited && !this->mMaze[randint]->isCurrent) {
+                S.push(this->mMaze[randint]);
+            }
+        }
+
+        MazeCell *cell = S.top();
+        MazeCell *newCell = this->freeNeighbour(cell, WILSON);
+    
+        if (!newCell->isCurrent) {
+
+            newCell->isCurrent = true;
+            S.push(newCell);
+            
+        } else if (newCell->isCurrent) {
+
+            while (cell->getRow() * this->mDim.y + cell->getCol() != newCell->getRow() * this->mDim.y + newCell->getCol()) {
+                cell->isCurrent = false;
+                S.pop();
+                if (S.empty()) break;
+                cell = S.top();
+            }
+
+        } else if (newCell->visited) {
+
+            while (!S.empty()) {
+                cell->visited = true;
+                cell->isCurrent = false;
+                numOfVisited++;
+                this->removeWalls(newCell, cell);
+                if (!S.empty()) { 
+                    newCell = cell;
+                    cell = S.top();
+                }
+            }
+
+        }
+
+        window.clear();
+        this->draw(window);
+        window.display();
+    }
 
     this->isGenerated = true;
 }

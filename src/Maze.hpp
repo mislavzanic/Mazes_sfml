@@ -5,6 +5,12 @@
 #include <vector>
 
 namespace mg {
+
+    enum mazeMode {
+        RECURSIVE = 10,
+        PRIM = 11,
+        WILSON = 12,
+    };
     
     class Maze {
     private:
@@ -33,7 +39,7 @@ namespace mg {
         void solveBFS(sf::RenderWindow& window);
         void solveDFS(sf::RenderWindow &window);
 
-        MazeCell *freeNeighbour(MazeCell *cell);
+        MazeCell *freeNeighbour(MazeCell *cell, mazeMode mode);
         void removeWalls(MazeCell *cell1, MazeCell *cell2);
 
         bool isGenerated = false;
